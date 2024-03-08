@@ -1,14 +1,14 @@
 import { Manifest } from "deno-slack-sdk/mod.ts";
 import { EmailListenerFunction } from "./functions/email_listener_function.ts";
-// Add the EmailWorkflow
+import EmailWorkflow from "./workflows/email_workflow.ts";
 import ThreadWorkflow from "./workflows/thread_workflow.ts";
 
 export default Manifest({
-  name: "email-response-generator",
+  name: "MJ-email-response-generator",
   description:
     "An app that creates responses to emails automatically within a thread.",
   icon: "assets/robot-emoji.png",
-  workflows: [ThreadWorkflow],
+  workflows: [EmailWorkflow, ThreadWorkflow],
   outgoingDomains: ["api.openai.com"],
   functions: [
     EmailListenerFunction,
